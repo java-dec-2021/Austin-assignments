@@ -12,10 +12,10 @@ public class AlfredTest {
 
         // System.out.println(testGreeting);
         // System.out.println(testGuestGreeting);
-        System.out.println(testDateAnnouncement);
-        // System.out.println(alexisTest);
-        // System.out.println(alfredTest);
-        // System.out.println(notRelevantTest);
+        // System.out.println(testDateAnnouncement);
+        System.out.println(alexisTest);
+        System.out.println(alfredTest);
+        System.out.println(notRelevantTest);
     }
 }
 

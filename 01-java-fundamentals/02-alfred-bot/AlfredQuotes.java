@@ -6,7 +6,7 @@ public class AlfredQuotes {
     }
     
     public String guestGreeting(String name, String dayPeriod) {
-        return(String.format("Good %s, %s. Lovely to see you.", dayPeriod, name));
+        return String.format("Good %s, %s. Lovely to see you.", dayPeriod, name);
     }  
 
     public String dateAnnouncement() {
