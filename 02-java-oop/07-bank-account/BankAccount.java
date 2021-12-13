@@ -48,9 +48,9 @@ public class BankAccount {
     // methods
     public void deposit(double amount, String accountType){
         if(accountType.equals("checking")){
-            this.setCheckingBalance(this.getCheckingBalance() + amount);
+            this.setCheckingBalance(this.getCheckingBalance() + moneyInAccounts);
         } else if(accountType.equals("savings")) {
-            this.setSavingsBalance(this.getSavingsBalance() + amount);
+            this.setSavingsBalance(this.getSavingsBalance() + moneyInAccounts);
         } else {
             System.out.println("Account does not exist.");
             return;
