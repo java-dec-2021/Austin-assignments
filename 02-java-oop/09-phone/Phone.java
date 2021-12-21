@@ -6,6 +6,7 @@ public abstract class Phone {
     private String carrier;
     private String ringTone;
 
+    
     public Phone(String versionNumber, int batteryPercentage, String carrier, String ringTone){
         this.versionNumber = versionNumber;
         this.batteryPercentage = batteryPercentage;
