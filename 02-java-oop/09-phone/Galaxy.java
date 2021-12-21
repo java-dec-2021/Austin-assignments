@@ -20,3 +20,4 @@ public class Galaxy extends Phone implements Ringable {
         System.out.println("Galaxy carrier: " + this.getCarrier());
         System.out.println("Galaxy ring tone: " + this.getRingTone());
     }
+}
