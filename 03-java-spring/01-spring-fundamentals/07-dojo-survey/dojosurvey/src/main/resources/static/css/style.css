@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+.container {
+	color: blue;
+	display: flex;
+	flex-direction: column;
+}
+
+.inputs {
+	margin-bottom: 10px;
+}
