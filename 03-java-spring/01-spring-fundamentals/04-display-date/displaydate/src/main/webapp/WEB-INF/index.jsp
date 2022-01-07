@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Display Date Home</title>
 </head>
 <body>
-
+<a href="/date">Display Date</a>
+<a href="/time">Display Time</a>
 </body>
 </html>
