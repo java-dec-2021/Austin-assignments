@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.austin.productsandcategories.models.Category;
+import com.austin.productsandcategories.models.Product;
 import com.austin.productsandcategories.services.AppService;
 
 @Controller
@@ -47,7 +49,18 @@ public class CategoryController {
 	
 	@GetMapping("/{id}")
 	public String detailCat(Model model, @PathVariable("id") Long id) {
+		Category categoryToShow = this.aservice.findCategory(id);
+		model.addAttribute("notInCat", this.aservice.findProdNotCat(categoryToShow));
+		model.addAttribute("category", categoryToShow);
 		return "categoryDetail.jsp";
+	}
+	
+	@PostMapping("/{id}")
+	public String addProdToCat(@RequestParam("prods") Long id, @PathVariable("id") Long catId) {
+		Category catForAddingProd = this.aservice.findCategory(catId);
+		Product prodToAdd = this.aservice.findProduct(id);
+		this.aservice.addProdToCat(prodToAdd, catForAddingProd);
+		return "redirect:/categories/{id}";
 	}
 
 }

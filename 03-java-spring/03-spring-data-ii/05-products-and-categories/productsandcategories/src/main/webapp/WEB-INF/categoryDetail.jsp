@@ -7,9 +7,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Category Details</title>
 </head>
 <body>
-<p>Detail page? This is where the drop down list will append the to the other side.</p>
+<h1><c:out value="${category.name}" /></h1>
+<hr>
+<h3>Products:</h3>
+<ul>
+<c:forEach items="${category.products}" var="prod">
+<li>${prod.name}</li>
+</c:forEach>
+</ul>
+<div>
+<form method="POST" action="/categories/${category.id}">
+<select name="prods">
+<c:forEach items="${notInCat}" var ="prod">
+<option value="${prod.id}">${prod.name}</option>
+</c:forEach>
+</select>
+<button>Add Product</button>
+</form>
+</div>
 </body>
 </html>

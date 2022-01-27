@@ -51,13 +51,35 @@ public class AppService {
 		return this.proRepo.findById(id).orElse(null);
 	}
 	
-//	CONNECTION SERVICE:
+//	Many-To-Many SERVICE:
+	
+//	products:
 	
 //	find a product within a specific category:
+	public List<Product> findProdNotCat(Category cat) {
+		return this.proRepo.findByCategoriesNotContains(cat);
+	}
 	
+//	add product to category
+	public void addProdToCat(Product prod, Category cat) {
+		List<Product> existingProds = cat.getProducts();
+		existingProds.add(prod);
+		this.catRepo.save(cat);
+	}
+	
+//	categories:
 	
 //	find a category within a specific product:
+	public List<Category> findCatNotProd(Product prod) {
+		return this.catRepo.findByProductsNotContains(prod);
+	}
 	
+//	add category to product
+	public void addCatToProd(Product prod, Category cat) {
+		List<Category> existingCats = prod.getCategories();
+		existingCats.add(cat);
+		this.proRepo.save(prod);
+	}
 	
 	
 }

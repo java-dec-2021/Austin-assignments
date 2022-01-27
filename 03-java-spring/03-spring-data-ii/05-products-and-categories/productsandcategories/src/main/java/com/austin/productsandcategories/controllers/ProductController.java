@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.austin.productsandcategories.models.Category;
 import com.austin.productsandcategories.models.Product;
 import com.austin.productsandcategories.services.AppService;
 
@@ -51,7 +53,18 @@ public class ProductController {
 	
 	@GetMapping("/{id}")
 	public String detailProd(Model model, @PathVariable("id") Long id) {
+		Product productToShow = this.aservice.findProduct(id);
+		model.addAttribute("notInProd", this.aservice.findCatNotProd(productToShow));
+		model.addAttribute("product", productToShow);
 		return "productDetail.jsp";
+	}
+	
+	@PostMapping("/{id}")
+	public String addCatToProd(@RequestParam("cats") Long id, @PathVariable("id") Long prodId) {
+		Product prodForAddingCat = this.aservice.findProduct(prodId);
+		Category catToAdd = this.aservice.findCategory(id);
+		this.aservice.addCatToProd(prodForAddingCat, catToAdd);
+		return "redirect:/products/{id}";
 	}
 	
 	
